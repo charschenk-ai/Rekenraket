@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rekenraket</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app" aria-live="polite">
+      <section class="stage" aria-label="Rekenraket spel">
+        <div class="sky">
+          <div class="sun" aria-hidden="true"></div>
+          <div class="cloud cloud-a" aria-hidden="true"></div>
+          <div class="cloud cloud-b" aria-hidden="true"></div>
+          <div class="rocket-wrap" aria-hidden="true">
+            <span class="reward-charm"></span>
+            <svg class="rocket" viewBox="0 0 160 220" role="img" aria-label="Raket">
+              <path class="rocket-body" d="M80 10c38 34 49 86 35 147H45C31 96 42 44 80 10Z" />
+              <circle class="window" cx="80" cy="78" r="22" />
+              <path class="fin fin-left" d="M48 141 20 190l37-15Z" />
+              <path class="fin fin-right" d="M112 141l28 49-37-15Z" />
+              <path class="flame" d="M62 157c5 22 12 37 18 49 6-12 13-27 18-49Z" />
+            </svg>
+          </div>
+          <div class="island" aria-hidden="true"></div>
+        </div>
+
+        <div class="panel">
+          <header class="topbar">
+            <div>
+              <p class="eyebrow">Voor 7 en 8 jaar</p>
+              <h1>Rekenraket</h1>
+            </div>
+            <button class="icon-button" id="resetButton" type="button" aria-label="Opnieuw starten" title="Opnieuw starten">
+              <span aria-hidden="true">↻</span>
+            </button>
+          </header>
+
+          <div class="stats" aria-label="Voortgang">
+            <div class="stat">
+              <span class="stat-label">Munten</span>
+              <strong id="coins">0</strong>
+              <small id="coinHint">Goed = +10</small>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Sterren</span>
+              <strong id="stars">0</strong>
+              <small id="starHint">Nog 5 goed</small>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Level</span>
+              <strong id="level">1</strong>
+              <small id="levelHint">Moeilijkheid</small>
+            </div>
+          </div>
+
+          <div class="practice-controls" aria-label="Oefenkeuze">
+            <div class="mode-switch">
+              <button class="mode-button active" id="mixedModeButton" type="button">Gemengd</button>
+              <button class="mode-button" id="tablesModeButton" type="button">Tafels 1-10</button>
+            </div>
+            <div class="table-picker" id="tablePicker" aria-label="Kies een tafel"></div>
+          </div>
+
+          <div class="earning-card" aria-label="Verdienen">
+            <div>
+              <span>Goed antwoord</span>
+              <strong>+10</strong>
+            </div>
+            <div>
+              <span>Combo bonus</span>
+              <strong id="bonusPreview">+0</strong>
+            </div>
+            <div>
+              <span>5 goed op rij</span>
+              <strong>+25</strong>
+            </div>
+          </div>
+
+          <div class="mission-card">
+            <div class="mission-head">
+              <span id="missionType">Plusmissie</span>
+              <span id="combo">Combo x1</span>
+            </div>
+            <p class="prompt" id="prompt">4 + 3 = ?</p>
+            <form id="answerForm" class="answer-row">
+              <input id="answerInput" inputmode="numeric" autocomplete="off" aria-label="Antwoord" />
+              <button type="submit">Check</button>
+            </form>
+            <p class="feedback" id="feedback">Los de som op om munten te verdienen.</p>
+            <div class="progress-shell" aria-label="Voortgang naar volgende ster">
+              <div class="progress-bar" id="progressBar"></div>
+            </div>
+          </div>
+
+          <div class="choices" id="quickChoices" aria-label="Snelle antwoorden"></div>
+
+          <section class="shop" aria-label="Beloningen">
+            <div class="section-title">
+              <h2>Beloningen</h2>
+              <span>Koop met munten</span>
+            </div>
+            <div class="shop-grid" id="shopGrid"></div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
